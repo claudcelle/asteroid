@@ -21,7 +21,7 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill(color="black")
-
+        player_1.update(dt=dt)
         player_1.draw(screen=screen)
 
         pygame.display.flip()
