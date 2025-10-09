@@ -30,7 +30,7 @@ def main():
 
     player_1 = Player(x = SCREEN_WIDTH/2,
                       y = SCREEN_HEIGHT/2)
-    
+    # print(player_1)
     asteroid_field = AsteroidField()
     while True: 
         """ Allows to close the window with close button"""

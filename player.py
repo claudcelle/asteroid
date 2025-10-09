@@ -10,7 +10,8 @@ class Player(CircleShape):
         self.shoot_timer = 0
 
     def __repr__(self):
-        return f"Player(x={self.position.x:.2f}, y={self.position.y:.2f}, radius={self.radius}, rotation={self.rotation:.2f}, velocity: {self.velocity:.2f})"
+        a,b,c = self.triangle()
+        return f"Player(x={self.position.x:.2f}, y={self.position.y:.2f}, radius={self.radius}, rotation={self.rotation:.2f}, velocity: {self.velocity:.2f}, vertices: {a,b,c})"
 
     # in the player class
     def triangle(self):
@@ -34,9 +35,11 @@ class Player(CircleShape):
         self.position += pygame.Vector2(0,1).rotate(self.rotation)*PLAYER_SPEED*dt
 
     def shoot(self):
-        shot = Shot(self.position.x ,
-                    self.position.y + self.radius,
-                    )
+        a,b,c = self.triangle()
+        shot = Shot(a.x,a.y)
+        # shot = Shot(self.position.x ,
+        #             self.position.y + self.radius,
+        #             )
         shot.velocity = pygame.Vector2(0,1).rotate(self.rotation)*PLAYER_SHOOT_RATE
 
         
@@ -78,7 +81,7 @@ class Shot(Asteroid):
     
 
 
-# player = Player(1,2,4)
-# player.rotation=45
-# player.velocity=4321
-# print(player)
+player = Player(1,2,4)
+player.rotation=45
+player.velocity=4321
+print(player)
